@@ -19,7 +19,7 @@
 Якщо тільки один інтерфейс має реалізацію метода із одинаковими назвами - можна викликати як super.method()
 Якщо мають декілька - super<InterfaceName>.method()
  
- `interface Clickable {
+ ```interface Clickable {
     fun a()
     fun b() = "Clickable b"
     fun c() = "Focusable c"
@@ -37,31 +37,35 @@
     override fun b() = super<Clickable>.b()
     override fun c() = super.c()
     override fun d() {}
-}
+ }
 
     println(implementation.b())
-    println(implementation.c())`
+    println(implementation.c())
+```
 
 ######Output:
     
  Clickable b
  Focusable c
  
-  ## Astract classes.
+  ##Astract classes.
   
-  abstract class Animated {
-    abstract fun animate() // by default opened
-    open fun stopAnimating() {
-    // just opened
-    }
+ ``` abstract class Animated {
+   
+       abstract fun animate() // by default opened
+   
+       open fun stopAnimating() {
+          // just opened
+       }
 
-    fun animateTwice() {
-    // final (not opened)
-    //it does not metter, that class is abstract. 
-    }
-}
+       fun animateTwice() {
+          // final (not opened)
+          //it does not metter, that class is abstract. 
+        }
+   }
+   ```
   
-    ## Modifiers.
+  ##Modifiers.
 
   ######Модификатор           ######Член класса            ######Объявление верхнего уровня
   public (по умолчанию)       Доступен повсюду             Доступно повсюду
