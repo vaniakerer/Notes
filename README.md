@@ -43,12 +43,12 @@
     println(implementation.c())
 ```
 
-######Output:
+###### Output:
     
  Clickable b
  Focusable c
  
-  ##Astract classes.
+  ## Astract classes.
   
  ``` abstract class Animated {
    
@@ -65,9 +65,9 @@
    }
    ```
   
-  ##Modifiers.
+  ## Modifiers.
 
-  ######Модификатор           ######Член класса            ######Объявление верхнего уровня
+  ###### Модификатор           ###### Член класса            ###### Объявление верхнего уровня
   public (по умолчанию)       Доступен повсюду             Доступно повсюду
   internal                    Доступен только в модуле     Доступно в модуле
   protected                   Доступен в подклассах        —
