@@ -19,7 +19,8 @@
 Якщо тільки один інтерфейс має реалізацію метода із одинаковими назвами - можна викликати як super.method()
 Якщо мають декілька - super<InterfaceName>.method()
  
- ```interface Clickable {
+ ```
+ interface Clickable {
     fun a()
     fun b() = "Clickable b"
     fun c() = "Focusable c"
@@ -50,7 +51,8 @@
  
   ## Astract classes.
   
- ``` abstract class Animated {
+ ``` 
+ abstract class Animated {
    
        abstract fun animate() // by default opened
    
@@ -67,11 +69,11 @@
   
   ## Modifiers.
 
-  ###### Модификатор           ###### Член класса            ###### Объявление верхнего уровня
-  public (по умолчанию)       Доступен повсюду             Доступно повсюду
-  internal                    Доступен только в модуле     Доступно в модуле
-  protected                   Доступен в подклассах        —
-  private                     Доступен в классе            Доступно в файле
+  #### Модификатор                   Член класса                  Объявление верхнего уровня
+  ###### public (по умолчанию)       Доступен повсюду             Доступно повсюду
+  ###### internal                    Доступен только в модуле     Доступно в модуле
+  ###### protected                   Доступен в подклассах        —
+  ###### private                     Доступен в классе            Доступно в файле
 
 
   Клас із модифікатором internal не може мати пеблічних extention functions
