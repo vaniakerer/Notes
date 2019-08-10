@@ -44,6 +44,26 @@
     println(implementation.c())
 ```
 
+
+```
+    interface User {
+        val nickname: String
+        val email: String
+    }
+    
+    class ParticularUser(override val nickname) : User {
+        override val nickname : String
+              get() = 
+              
+        private fun longOperation(){
+             
+        }
+    
+    }
+ ```
+    
+Классы, реализующие интерфейс User, должны предоставить способ получить значение свойства nickname.
+
 ###### Output:
     
  Clickable b
@@ -82,3 +102,27 @@
   Клас із модифікатором private буде скомпілений в клас із модифікатором package default
   internal -> public. 
   Із java-коду можна обійти модифікатор internal
+  
+  ## Inner classes
+```
+class Outer {
+      inner class Inner {
+          fun getOuterReference(): Outer = this@Outer
+      }
+  }
+  ```
+  Щоб звернутися до зовнішнього класу потрібно явно вказат його ім’я
+  
+ 
+  ## Fields
+  
+  ```
+  class MyClass {
+    public var asf = "asf"
+        private set
+  }
+  
+  ```
+  Таким чином можна забрати дрступ до set - методу публічного поля
+  
+  //TODO подивтсь, що буде, якщо перевизначити сет методи самому
