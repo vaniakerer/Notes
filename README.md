@@ -144,4 +144,77 @@ class Outer {
      
    3. #### Aonymous class
      Може реалізовувати декілька інтерфейсів
-     Може мат доступ до не filan змінних влажуємого класу
+     Може мати доступ до не filan змінних влажуємого класу
+     
+     
+   ##Lambda
+   
+   1. Можна зберігати в змінну:
+   ```
+   val sum = { х: In t, у: In t -> х + у }
+   println(sum(l, 2))
+   ```
+   
+   ###### Output:
+   3
+   
+   2. Можна викликати напряму:
+   
+   ```
+   { println(42) }()
+   
+   or
+   
+   run{ pringln(42) }
+   ```
+   ###### Output:
+   42
+   
+   3. Може ’захватувати’ не фінальні змінні.
+   
+   ```
+   fun tryToCountButtonClicks(button: Button): In t {
+      var clicks = 0
+      button.onClick { clicks++ }
+      return clicks
+   }
+```
+
+   ###### Output:
+   0
+   
+   final змінні (var) просто проокидуються в лямбду
+   не фінальні (val) компілятором (можливо) вставляються в клас обгортку (Ref.kt); екземпляр класу Ref є фінальним, але      змінна, яка помістилась в нього залишається не фінальною
+   
+   ```
+   val counter = 0
+   val inc = { counter++ }
+   ```
+   counter буде поміщений в Ref.ct
+   
+   4. Ссилка на функцію / конструктор
+   
+   через :: можна ссилатись на метод класу:
+   
+   ```
+   data class Person(val name: String, val age: Int)
+
+   val getAge = Person::age
+   println(getAge(Person("Ivan", 22)))
+   ```
+   ###### Output:
+   22
+
+
+   або конструктор:
+   
+   ```   
+   val createPerson = ::Person
+   val p = createPerson("Alice", 29)
+   println(p)
+   ```
+   ###### Output:
+   Person(name=Alice, age=29)  
+   
+   Можна ссилатись на фунцію верхнього рівня (::hightLevelFunction) без імені класую
+   Можна ссилатись на функцію розширення
