@@ -9,6 +9,7 @@
  
  2. String.toRegex()
  
+ 
  ## Interfaces.
  
 Должны явно реализовать метод, если
@@ -69,6 +70,7 @@
  Clickable b
  Focusable c
  
+  
   ## Astract classes.
   
  ``` 
@@ -103,6 +105,7 @@
   internal -> public. 
   Із java-коду можна обійти модифікатор internal
   
+  
   ## Inner classes
 ```
 class Outer {
@@ -127,9 +130,11 @@ class Outer {
  
   == - equals(). === - hashCode
   
+  
   ## Delegate
   
   by - можна делегувати метод та поля класу
+  
   
   ## object
    
@@ -147,7 +152,7 @@ class Outer {
      Може мати доступ до не filan змінних влажуємого класу
      
      
-   ##Lambda
+   ## Lambda
    
    1. Можна зберігати в змінну:
    ```
@@ -218,3 +223,96 @@ class Outer {
    
    Можна ссилатись на фунцію верхнього рівня (::hightLevelFunction) без імені класую
    Можна ссилатись на функцію розширення
+
+
+   ## Collections
+   
+   #### filter
+    ```
+    val a = arrayListOf(1, 2, 3, 4)
+    val b = a.filter { it > 2 }
+    println(b.joinToString())
+    ```
+   ###### Output:
+   3, 4
+   
+   filter створює нову колекцію. Змінна a залшеться без змін (1, 2, 3, 4)
+   
+   #### map
+   Аналогічний Rx
+   
+   #### mapKey / mapValue / filterKeys
+   ```
+    val a = mapOf(1 to "Ivan", 2 to "Kerer")
+    println(a.mapKeys { it.key * 2 })
+    println(a.mapValues { it.value + it.key })
+   ```
+   
+   ###### Output:
+   {2=Ivan, 4=Kerer}
+   {1=Ivan1, 2=Kerer2}
+   
+   mapKeys, mapValues - змінюють ключі/значення відповідно
+   
+   #### all / any / count
+   ```
+    val a = listOf(1, 2, 3, 4, 5, 6, 7, "asfasf", 8, 9, 10)
+    println(a.all { it is Int && it > 2 })
+    println(a.any { it is String })
+    println(a.count { it is String })
+   ```
+   
+   ###### Output: 
+   false
+   true
+   1
+   
+   #### Difference between size and count
+   
+   ```
+   val a = listOf(1, 2, 3, 4, 5)
+   a.filter{it > 2}.size
+   a.count{it > 2}
+   ```
+   
+   із size - за рахунок оператора filter створиться проміжна колекція. 
+   із count - просто порахується кількість елементів
+   
+   
+   #### find / firstOrNull
+   
+   Знаходять перший елемент, який підходить
+   
+   #### groupBy
+   
+   ```
+   val people = listOf(Person("Alice", 31), Person("Bob, 29), Person("Carol", 31))
+   println(people.groupBy { it.age })
+   ```
+   ###### Output
+   {29=[Person(name=Bob, age=29)], 31=[Person(name=Alice, age=31), Person(name=Carol, age=31)]}
+   
+   Групує в мапу, де, ключем буде результат дямбди. people.groupy{} is Map<Int,List<Person>>
+ 
+   one more example
+   ```
+    val a = listOf("Ivan", "Kerer", "September", "iOS", "Izotop")
+    val map = a.groupBy { it.length }
+    println(map)
+   ```
+   
+   ###### Output
+   {4=[Ivan, iOSs], 5=[Kerer], 9=[September], 6=[Izotop]}
+   
+   #### flatMap / flatten
+   ```
+   val books = listOf(Book("Thursday Next", listOf("Dasper Fforde")), Book("Mort", listOf("Terry Pratchett")), Book("Good Omens", listOf("Terry Pratchett","Neil Gaiman")))
+   println(books.flatMap { it.authors }.toSet())
+   ```
+   
+   ###### Output
+   [Dasper Fforde, Terry Pratchett, Neil Gaiman]
+   
+   flatten - використовувати, якщо потрібно просто об’єднати колекції
+   
+   //TODO почитати про flatMap i flatten
