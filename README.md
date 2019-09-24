@@ -329,3 +329,30 @@ class Outer {
    with (просто бібліотечні функція) - повертає значення із лямбди
    apply (функція-розширення) - повертає самий об’єкт, до якого була виконана функція apply
    
+   
+   ## Generics
+  
+   ```
+   class A<T>(val value : T) {
+       fun test(value : T) {
+           value?.toString();
+       }
+   }
+   ```
+   Generic type може бути з підтримкою null (Any?). Тому потрібно додавати null check (?.)
+   Щоб заборонити використання null потрібно T зробити не доступним із null (T : Any instead of T : Any?)
+   
+   ## Any
+   Compiles to Object in byte code.
+   
+   Any has only 3 methods equals(), hasCode() and toString(). If you whant to use wait()/notify() you have to cast your instance to Object
+   
+   ## Unit
+   Compiles to void.
+   Always has only one instance of this class.
+   Medhod with Unit as a return parametr does not have to has a return call
+   
+   ## Nothing
+   Has no instances.
+   Means that a function with this return type won\`t return something (throw an exception or infinit cycle)
+   
