@@ -356,3 +356,7 @@ class Outer {
    Has no instances.
    Means that a function with this return type won\`t return something (throw an exception or infinit cycle)
    
+   ## Arrays
+   Array<Int> -> Integer[]
+   IntArray -> int[]
+   
