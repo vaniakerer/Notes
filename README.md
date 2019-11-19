@@ -1,2 +1,3 @@
 [Kotlin](Kotlin.md)
-[Design Patterns](Design Patterns/Design Patterns.md)
+
+[Design Patterns](Design%20Patterns/Design%20Patterns.md)
