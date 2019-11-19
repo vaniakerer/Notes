@@ -1,1 +1,1 @@
-[Kotlin](Notes/Kotlin.md)
+[Kotlin](Kotlin.md)
